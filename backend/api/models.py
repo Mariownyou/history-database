@@ -9,7 +9,7 @@ class Author(models.Model):
     died = models.DateField('died')
     image = ProcessedImageField(
         upload_to='authors',
-        processors=[ResizeToFill(100, 100)],
+        processors=[ResizeToFit(200, 200)],
         format='JPEG',
         options={'quality': 100},
         blank=True, null=True
@@ -41,10 +41,9 @@ class Art(models.Model):
     year = models.DateField('year created')
     city = models.ForeignKey(City, on_delete=models.CASCADE, related_name='works')
     author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name='works')
-    author_info = models.ForeignKey(Author, on_delete=models.SET_NULL, related_name='info', null=True, blank=True)
     image = ProcessedImageField(
         upload_to='works',
-        processors=[ResizeToFill(300, 200)],
+        processors=[ResizeToFit(300, 200)],
         format='JPEG',
         options={'quality': 100},
     )

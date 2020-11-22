@@ -1,5 +1,6 @@
 import React from 'react'
 import { Typography, Grid, Divider } from '@material-ui/core'
+import GridItem from '../ui/GridItem'
 
 
 const PostCardContent = ({ item }) => {
@@ -9,28 +10,17 @@ const PostCardContent = ({ item }) => {
                 <Typography 
                 component="h5" 
                 variant="subtitle1"
+                align='center'
+                style = {{fontWeight: 'bold'}}
                 >
                 { item.title }
                 </Typography>
                 <Divider />
 
             </Grid>
-            <Grid item xs={6}>
-                <Typography component="h5" variant="subtitle1">
-                Год
-                </Typography>
-                <Typography component="h5" variant="subtitle1">
-                Автор
-                </Typography>
-            </Grid>
-            <Grid item xs={6}>
-                <Typography component="h5" variant="subtitle1">
-                {item.year}
-                </Typography>
-                <Typography variant="subtitle1" color="textSecondary">
-                {item.author_info.name}
-                </Typography>
-            </Grid>
+            <GridItem title="Автор" value={ item.author }/>
+            <GridItem title="Год" value={ item.year }/>
+            <GridItem title="Город" value={ item.city }/>
         </Grid>
     )
 }

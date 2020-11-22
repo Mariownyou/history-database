@@ -21,12 +21,12 @@ export const PostDetailMeta = ({ item }) => {
             <Box m={2}>
             <Grid container alignItems="center">
                 <Grid item xs={6}>
-                    <img className={ classes.image } src={ item.image } />
+                    <img className={ classes.image } src={ item.image } alt={ item.title }/>
                 </Grid>
                 <Grid item xs={6}>
                     <Typography align='center'>{ item.year }</Typography>
-                    <Typography align='center'>{ item.author_info.name }</Typography>
-                    <Typography align='center'>{ item.author_info.name }</Typography>
+                    <Typography align='center'>{ item.city }</Typography>
+                    <Typography align='center'>{ item.author }</Typography>
                 </Grid>
             </Grid>
             </Box>

@@ -6,6 +6,7 @@ router = routers.DefaultRouter()
 router.register(r'works', views.WorksViewSet)
 router.register(r'authors', views.AuthorsViewSet)
 router.register(r'types', views.TypesViewSet)
+router.register(r'cities', views.CityViewSet)
 
 
 # Wire up our API using automatic URL routing.
