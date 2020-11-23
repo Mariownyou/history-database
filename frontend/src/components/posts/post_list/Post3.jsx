@@ -2,17 +2,19 @@ import React from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { Paper, Box, Grid, Container, Typography, Divider, ButtonBase } from '@material-ui/core'
 import { Link } from 'react-router-dom'
+import PostInfo from '../PostInfo'
+import PostTitle from '../PostTitle'
 
 const useStyles = makeStyles((theme) => ({
     cover: {
         width: '100%',
-        height: 250,
+        height: 300,
         objectFit: 'cover',
         zIndex: -1
     },
     card: {
         width: '100%',
-        height: 250,
+        height: 300,
         display: 'grid',
         placeItems: 'center',
         position: 'relative',
@@ -49,53 +51,11 @@ const Post3 = ({ item }) => {
             <Paper className={classes.card}>
                 <img src={ item.image } alt={ item.title } className={ classes.cover } />
                 <Container className={classes.title}>
-                    <CardTitle item={item} />
-                    <CardInfo item={item} />
+                    <PostTitle item={item} classes={classes} />
+                    <PostInfo item={item} classes={classes} />
                 </Container>
             </Paper>
             </ButtonBase>
-        </Box>
-    )
-}
-
-const CardTitle = ({ item }) => {
-    const classes = useStyles()
-
-    return (
-        <Box>
-            <Typography align='center'>{ item.title }</Typography>
-            <Box paddingX={5} mb={1}>
-                <Divider className={classes.divider}/>
-            </Box> 
-        </Box>
-    )
-}
-
-const CardInfo = ({ item }) => {
-    const classes = useStyles()
-
-    return (
-        <Box>
-            <Grid container className={classes.text}>
-                <Grid item xs={3}>
-                    <Typography align='center'>Год</Typography>
-                </Grid>
-                <Grid item xs={9}>
-                    <Typography align='center'>{ item.year }</Typography>
-                </Grid>
-                <Grid item xs={3}>
-                    <Typography align='center'>Город</Typography>
-                </Grid>
-                <Grid item xs={9}>
-                    <Typography align='center'>{ item.city }</Typography>
-                </Grid>
-                <Grid item xs={3}>
-                    <Typography align='center'>Автор</Typography>
-                </Grid>
-                <Grid item xs={9}>
-                    <Typography align='center'>{ item.author }</Typography>
-                </Grid>
-            </Grid>
         </Box>
     )
 }

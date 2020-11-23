@@ -17,6 +17,9 @@ const theme = createMuiTheme({
   },
   typography: {
     fontFamily: font,
+    caption: {
+      fontFamily: "'Caveat', cursive"
+    },
     button: {
       textTransform: "none"
     }
@@ -28,9 +31,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Navbar />
-      <Container>
-        <Content />
-      </Container>
+      <Content />
     </ThemeProvider>
   );
 }
