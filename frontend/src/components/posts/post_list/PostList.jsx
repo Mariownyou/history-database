@@ -6,7 +6,7 @@ import loaded from '../../../actions/loaded'
 import set_items from '../../../actions/set_items'
 import set_page from '../../../actions/set_page'
 import Loading from '../../ui/Loading'
-import Post from './Post2'
+import Post from './Post3'
 
 const PostList = () => {
     const items = useSelector(state => state.items)
