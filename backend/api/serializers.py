@@ -12,7 +12,8 @@ class WorkDetailSerializer(serializers.ModelSerializer):
     year = serializers.DateField(format="%d.%m.%Y")
     author = serializers.StringRelatedField()
     city = serializers.StringRelatedField()
-
+    type = serializers.StringRelatedField()
+    
     class Meta:
         model = Art
         # fields = ('url', 'id', 'title', 'year', 'author', 'body', 'reason', 'type', 'image')

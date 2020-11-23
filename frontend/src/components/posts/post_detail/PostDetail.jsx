@@ -2,9 +2,11 @@ import React, { useEffect } from 'react'
 import axios from 'axios'
 import { useSelector, useDispatch } from 'react-redux'
 import { Box, Paper, Typography, Divider, Container } from '@material-ui/core'
-import loaded from '../../actions/loaded'
-import set_item from '../../actions/set_item'
-import Loading from '../ui/Loading'
+import loaded from '../../../actions/loaded'
+import set_item from '../../../actions/set_item'
+import set_page from '../../../actions/set_page'
+import Loading from '../../ui/Loading'
+import BackButton from '../../ui/GoBackButton'
 import PostMeta from './PostDetailMeta'
 
 export const PostDetail = ({ match }) => {
@@ -18,6 +20,7 @@ export const PostDetail = ({ match }) => {
         const fetchItems = async () => {
             const result = await axios(url)
             console.log(result.data)
+            dispatch(set_page(result.data.type))
             dispatch(set_item(result.data))
             dispatch(loaded())
         }
@@ -26,10 +29,11 @@ export const PostDetail = ({ match }) => {
 
     return isLoading ? ( <Loading /> ) : (
         <Paper>
+            <BackButton />
             <Container>
             <PostMeta item={item}/>
             <Divider />
-            <Box m={1}>
+            <Box m={1} pb={1}>
                 <Typography>{ item.body }</Typography>
             </Box>
             </Container>

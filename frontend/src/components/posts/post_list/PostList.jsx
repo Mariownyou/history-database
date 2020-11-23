@@ -2,10 +2,11 @@ import React, { useEffect } from 'react'
 import axios from 'axios'
 import { useSelector, useDispatch } from 'react-redux'
 import { Box } from '@material-ui/core'
-import loaded from '../../actions/loaded'
-import set_items from '../../actions/set_items'
-import Loading from '../ui/Loading'
-import Post from './Post'
+import loaded from '../../../actions/loaded'
+import set_items from '../../../actions/set_items'
+import set_page from '../../../actions/set_page'
+import Loading from '../../ui/Loading'
+import Post from './Post2'
 
 const PostList = () => {
     const items = useSelector(state => state.items)
@@ -18,6 +19,7 @@ const PostList = () => {
         const fetchItems = async () => {
             const result = await axios(url)
             console.log(result.data)
+            dispatch(set_page('Все Работы'))
             dispatch(set_items(result.data))
             dispatch(loaded())
         }

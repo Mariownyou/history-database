@@ -9,7 +9,7 @@ class Author(models.Model):
     died = models.DateField('died')
     image = ProcessedImageField(
         upload_to='authors',
-        processors=[ResizeToFit(200, 200)],
+        processors=[ResizeToFit(400, 400)],
         format='JPEG',
         options={'quality': 100},
         blank=True, null=True
@@ -43,7 +43,7 @@ class Art(models.Model):
     author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name='works')
     image = ProcessedImageField(
         upload_to='works',
-        processors=[ResizeToFit(300, 200)],
+        processors=[ResizeToFit(600, 400)],
         format='JPEG',
         options={'quality': 100},
     )

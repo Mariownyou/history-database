@@ -1,6 +1,6 @@
 import { Switch, Route } from 'react-router-dom'
-import PostList from '../posts/PostList'
-import PostDetail from '../posts/PostDetail'
+import PostList from '../posts/post_list/PostList'
+import PostDetail from '../posts/post_detail/PostDetail'
 
 
 export default function Content() {

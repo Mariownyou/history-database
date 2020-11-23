@@ -7,8 +7,8 @@ const useStyles = makeStyles((theme) => ({
     image: {
         width: 160,
         height: 160,
-        objectFit: 'cover'
-    }
+        objectFit: 'fill'
+    },
 }));
 
 export const PostDetailMeta = ({ item }) => {
