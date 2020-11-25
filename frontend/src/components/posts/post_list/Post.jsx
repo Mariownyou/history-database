@@ -29,13 +29,16 @@ const useStyles = makeStyles((theme) => ({
     },
     text: {
         position: 'absolute',
-        fontSize: 14,
+        fontSize: 'calc(1em * 0.875)',
         fontWeight: 'normal',
     },
     divider: {
         backgroundColor: 'white',
         height: 2,
     },
+    size: {
+        fontSize: 20
+    }
 }))
 
 const Post3 = ({ item }) => {

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Art, Author, Type, City
+from .models import Art, Author, Type, City, Year
 
 
 class AuthorSerializer(serializers.HyperlinkedModelSerializer):
@@ -10,6 +10,7 @@ class AuthorSerializer(serializers.HyperlinkedModelSerializer):
 
 class WorkDetailSerializer(serializers.HyperlinkedModelSerializer):
     date = serializers.DateField(format="%d.%m.%Y")
+    year = serializers.StringRelatedField()
     authors = AuthorSerializer(many=True, read_only=True)
     city = serializers.StringRelatedField()
     type = serializers.StringRelatedField()
@@ -22,6 +23,7 @@ class WorkDetailSerializer(serializers.HyperlinkedModelSerializer):
 
 class WorkSerializer(serializers.ModelSerializer):
     date = serializers.DateField(format="%d.%m.%Y")
+    year = serializers.StringRelatedField()
     authors = AuthorSerializer(many=True, read_only=True)
     city = serializers.StringRelatedField()
     class Meta:
@@ -55,3 +57,9 @@ class CitySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = City
         fields = ('city', 'works')
+
+
+class YearSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Year
+        fields = ('url', 'year', 'works', 'born', 'died')

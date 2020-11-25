@@ -42,6 +42,14 @@ const useStyles = makeStyles((theme) => ({
   background: {
     backgroundColor: theme.palette.primary.main,
     color: 'white'
+  },
+  title: {
+    fontWeight: 'bold', 
+    fontSize: 24,
+    flexGrow: 1
+  },
+  subtitle: {
+    fontSize: 18,
   }
 }));
 
@@ -56,11 +64,11 @@ function ResponsiveDrawer(props) {
     setMobileOpen(!mobileOpen);
   };
 
-  const listItems = [{title: 'Работы', link: '/works'}, {title: 'Авторы', link: '/authors'}, {title: 'События', link: '/events'}]
+  const listItems = [{title: 'Работы', link: '/works'}, {title: 'Авторы', link: '/authors'}, {title: 'События', link: '/events'}, {title: 'Годы', link: '/years'}]
 
   const drawer = (
     <div className={classes.background}>
-      <div className={classes.toolbar} />
+      <div className={classes.toolbar}>Это пока что в работе</div>
       <Divider />
       <List>
         {listItems.map((item, index) => (
@@ -89,9 +97,10 @@ function ResponsiveDrawer(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="subtitle1" noWrap style={{fontWeight: 'bold', fontSize: 24}}>
+          <Typography variant="subtitle1" noWrap className={classes.title} >
             История
           </Typography>
+          <Typography variant="subtitle1" noWrap className={classes.subtitle} >{ page }</Typography>
         </Toolbar>
       </AppBar>
       <nav className={classes.drawer} aria-label="mailbox folders">

@@ -7,6 +7,7 @@ router.register(r'works', views.WorksViewSet)
 router.register(r'authors', views.AuthorsViewSet)
 router.register(r'types', views.TypesViewSet)
 router.register(r'cities', views.CityViewSet)
+router.register(r'years', views.YearsViewSet)
 
 
 # Wire up our API using automatic URL routing.

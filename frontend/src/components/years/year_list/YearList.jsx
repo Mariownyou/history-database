@@ -1,37 +1,43 @@
 import React, { useEffect } from 'react'
 import axios from 'axios'
 import { useSelector, useDispatch } from 'react-redux'
-import { Paper } from '@material-ui/core'
+import { Box, Container } from '@material-ui/core'
 import loaded from '../../../actions/loaded'
-import set_item from '../../../actions/set_item'
+import set_years from '../../../actions/set_years'
 import set_page from '../../../actions/set_page'
 import Loading from '../../ui/Loading'
-import BackButton from '../../ui/GoBackButton'
-import PostMeta from './PostDetailMeta'
+import Year from './Year'
 
-export const PostDetail = ({ match }) => {
-    const item = useSelector(state => state.item)
+
+const YearList = () => {
+    const years = useSelector(state => state.years)
     const isLoading = useSelector(state => state.loading)
     const dispatch = useDispatch()
 
     useEffect(() => {
         // const url = 'http://127.0.0.1:4000/api/cars/'
-        const url = `https://9abc209e1be6.ngrok.io/api/works/${match.params.id}`
+        const url = 'https://9abc209e1be6.ngrok.io/api/years/'
         const fetchItems = async () => {
             const result = await axios(url)
             console.log(result.data)
-            dispatch(set_page(result.data.type))
-            dispatch(set_item(result.data))
+            dispatch(set_page('Годы'))
+            dispatch(set_years(result.data))
             dispatch(loaded())
         }
         fetchItems()
-    }, [match.params.id])
+    }, [])
 
     return isLoading ? ( <Loading /> ) : (
-        <Paper>
-            <BackButton />
-            <PostMeta item={item} />
-        </Paper>
+        <Box mt={2}>
+            <Container>
+                {years.map(
+                    item => (
+                        <Year key={item.year} item={item} />
+                    )
+                )}
+            </Container>
+        </Box>
     )
 }
-export default PostDetail
+
+export default YearList

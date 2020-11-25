@@ -33,6 +33,9 @@ const useStyles = makeStyles((theme) => ({
     },
     size: {
         fontSize: 28
+    },
+    text: {
+        fontSize: 18,
     }
 }));
 
@@ -60,7 +63,7 @@ export const PostDetailMeta = ({ item }) => {
                 <Box my={2}>
                     <Typography variant='h5'>Всякая информация</Typography>
                 </Box>
-                <Typography>
+                <Typography className={classes.text}>
                     { item.body }
                 </Typography>
             </Container>

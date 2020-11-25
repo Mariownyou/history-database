@@ -1,8 +1,8 @@
 from rest_framework import viewsets
 from rest_framework import permissions
-from .serializers import WorkDetailSerializer, WorkSerializer, WorkCreateSerializer, AuthorDetailSerializer, TypeSerializer, CitySerializer
+from .serializers import WorkDetailSerializer, WorkSerializer, WorkCreateSerializer, AuthorDetailSerializer, TypeSerializer, CitySerializer, YearSerializer
 
-from .models import Art, Author, Type, City
+from .models import Art, Author, Type, City, Year
 
 
 class AuthorsViewSet(viewsets.ModelViewSet):
@@ -42,3 +42,11 @@ class CityViewSet(viewsets.ModelViewSet):
     """
     queryset = City.objects.all()
     serializer_class = CitySerializer
+
+
+class YearsViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows posts to be viewed or edited.
+    """
+    queryset = Year.objects.all()
+    serializer_class = YearSerializer
