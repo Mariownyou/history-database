@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
 import axios from 'axios'
 import { useSelector, useDispatch } from 'react-redux'
-import { Box, Container } from '@material-ui/core'
+import { Box, Container, Grid } from '@material-ui/core'
 import loaded from '../../../actions/loaded'
 import set_items from '../../../actions/set_items'
 import set_page from '../../../actions/set_page'
 import Loading from '../../ui/Loading'
-import Post from './Post3'
+import Post from './Post'
 
 const PostList = () => {
     const items = useSelector(state => state.items)
@@ -29,11 +29,16 @@ const PostList = () => {
     return isLoading ? ( <Loading /> ) : (
         <Box mt={2}>
             <Container>
+                <Grid container spacing={2}>
                 {items.map(
                     item => (
-                        <Post key={item.url} item={item} />
+                        <Grid item xs={12} md={6} key={item.url}>
+                            <Post item={item} />
+                        </Grid>
                     )
                 )}
+                </Grid>
+                
             </Container>
         </Box>
     )

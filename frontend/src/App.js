@@ -1,7 +1,6 @@
 import './App.css';
 import { Box, Container } from '@material-ui/core'
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
-import Content from './components/ui/Content'
 import Navbar from './components/ui/Navbar'
 
 
@@ -20,6 +19,9 @@ const theme = createMuiTheme({
     caption: {
       fontFamily: "'Caveat', cursive"
     },
+    subtitle1: {
+      fontFamily: "'Balsamiq Sans', cursive"
+    },
     button: {
       textTransform: "none"
     }
@@ -31,7 +33,6 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Navbar />
-      <Content />
     </ThemeProvider>
   );
 }

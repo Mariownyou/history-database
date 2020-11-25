@@ -8,9 +8,9 @@ class AuthorSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('url', 'name')     
 
 
-class WorkDetailSerializer(serializers.ModelSerializer):
-    year = serializers.DateField(format="%d.%m.%Y")
-    author = serializers.StringRelatedField()
+class WorkDetailSerializer(serializers.HyperlinkedModelSerializer):
+    date = serializers.DateField(format="%d.%m.%Y")
+    authors = AuthorSerializer(many=True, read_only=True)
     city = serializers.StringRelatedField()
     type = serializers.StringRelatedField()
     
@@ -20,13 +20,13 @@ class WorkDetailSerializer(serializers.ModelSerializer):
         fields = '__all__'
  
 
-class WorkSerializer(serializers.HyperlinkedModelSerializer):
-    year = serializers.DateField(format="%d.%m.%Y")
-    author = serializers.StringRelatedField()
+class WorkSerializer(serializers.ModelSerializer):
+    date = serializers.DateField(format="%d.%m.%Y")
+    authors = AuthorSerializer(many=True, read_only=True)
     city = serializers.StringRelatedField()
     class Meta:
         model = Art
-        fields = ('url', 'id', 'author', 'year', 'image', 'city', 'title')
+        fields = ('url', 'id', 'authors', 'year', 'date', 'image', 'city', 'title')
 
 
 class WorkCreateSerializer(serializers.HyperlinkedModelSerializer):

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import axios from 'axios'
 import { useSelector, useDispatch } from 'react-redux'
-import { Box, Paper, Typography, Divider, Container } from '@material-ui/core'
+import { Box, Paper } from '@material-ui/core'
 import loaded from '../../../actions/loaded'
 import set_item from '../../../actions/set_item'
 import set_page from '../../../actions/set_page'
@@ -30,13 +30,7 @@ export const PostDetail = ({ match }) => {
     return isLoading ? ( <Loading /> ) : (
         <Paper>
             <BackButton />
-            <Container>
-            <PostMeta item={item}/>
-            <Divider />
-            <Box m={1} pb={1}>
-                <Typography>{ item.body }</Typography>
-            </Box>
-            </Container>
+            <PostMeta item={item} />
         </Paper>
     )
 }

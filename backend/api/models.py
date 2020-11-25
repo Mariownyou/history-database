@@ -38,9 +38,10 @@ class City(models.Model):
 
 class Art(models.Model):
     title = models.CharField('title', max_length=200)
-    year = models.DateField('year created')
+    date = models.DateField('date created', null=True, blank=True)
+    year = models.IntegerField('year created', null=True, blank=True)
     city = models.ForeignKey(City, on_delete=models.CASCADE, related_name='works')
-    author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name='works')
+    authors = models.ManyToManyField(Author, blank=True, null=True)
     image = ProcessedImageField(
         upload_to='works',
         processors=[ResizeToFit(600, 400)],
@@ -50,3 +51,6 @@ class Art(models.Model):
     body = models.TextField('body')
     reason = models.TextField('reason', blank=True, null=True)
     type = models.ForeignKey(Type, on_delete=models.CASCADE, related_name='works')
+
+    class Meta:
+        ordering = ['year']

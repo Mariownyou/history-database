@@ -1,45 +1,63 @@
 import React from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { Card, CardMedia, CardContent, Box } from '@material-ui/core'
-import PostCardContent from './PostCardContent'
+import { Paper, Box, Grid, Container, Typography, Divider, ButtonBase } from '@material-ui/core'
+import { Link } from 'react-router-dom'
+import PostInfo from '../PostInfo'
+import PostTitle from '../PostTitle'
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-    maxHeight: 200,
-    // backgroundColor: '#C4C4C4'
-  },
-  details: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  content: {
-    flex: '1 0 auto',
-  },
-  cover: {
-    width: 300,
-    objectFit: 'fill'
-  },
-}));
+    cover: {
+        width: '100%',
+        height: 300,
+        objectFit: 'cover',
+        zIndex: -1
+    },
+    card: {
+        width: '100%',
+        height: 300,
+        display: 'grid',
+        placeItems: 'center',
+        position: 'relative',
+        background: 'linear-gradient(0deg, rgba(0,0,0, 0.6) 30%, rgba(210,210,210, 0) 100%)'
+    },
+    title: {
+        position: 'absolute',
+        top: '50%',
+        color: 'white',
+        fontWeight: 'bold',
+        fontSize: 18
+    },
+    text: {
+        position: 'absolute',
+        fontSize: 14,
+        fontWeight: 'normal',
+    },
+    divider: {
+        backgroundColor: 'white',
+        height: 2,
+    },
+}))
 
-export default function MediaControlCard({ item }) {
-  const classes = useStyles();
-  const theme = useTheme();
+const Post3 = ({ item }) => {
+    const classes = useStyles()
 
-  return (
-    <Box mb={2}>
-      <Card className={classes.root}>
-        <CardMedia
-        className={classes.cover}
-        image={item.image}
-        title={item.title}
-        />
-        <div className={classes.details}>
-          <CardContent className={classes.content}>
-            <PostCardContent item={item} />
-          </CardContent>
-        </div>
-      </Card>
-    </Box>
-  );
+    return (
+        <Box mb={2}>
+            <ButtonBase 
+            style={{width: '100%'}}
+            to={`/works/${item.id}`}
+            component={Link}
+            >
+            <Paper className={classes.card}>
+                <img src={ item.image } alt={ item.title } className={ classes.cover } />
+                <Container className={classes.title}>
+                    <PostTitle item={item} classes={classes} />
+                    <PostInfo item={item} classes={classes} />
+                </Container>
+            </Paper>
+            </ButtonBase>
+        </Box>
+    )
 }
+
+export default Post3
